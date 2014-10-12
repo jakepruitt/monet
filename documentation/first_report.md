@@ -127,4 +127,31 @@ This will prevent us from unwittingly committing code which breaks something.
 Wireframes
 ==========
 
+Main Pre-Login Page
+-------------------
+![](Monet_Main_Pre-Login_Page.png)
 
+Register Page
+-------------
+![](Monet_Register_Page.png)
+
+Main Listing Page
+-----------------
+![](Monet_Main_Listing_Page.png)
+
+Edit Account Page
+-----------------
+![](Monet_Edit_Account.png)
+
+Image Upload Page
+-----------------
+![](Monet_Image_Upload_Page.png)
+
+
+Image Detail Page
+-----------------
+![](Monet_Image_Detail_Page.png)
+
+Image Edit Page
+---------------
+![](Monet_Image_Edit_Page.png)
