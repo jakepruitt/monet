@@ -8,7 +8,7 @@ Jacob Ward, Jacob Pruitt, Nathan Flick
 Use Case Diagram
 ================
 
-![](Monet_Use_Case_Diagram.png)
+![](http://github.com/jrpruit1/monet/Monet_Use_Case_Diagram.png)
 
 Architecture
 ============
@@ -129,29 +129,29 @@ Wireframes
 
 Main Pre-Login Page
 -------------------
-![](Monet_Main_Pre-Login_Page.png)
+![](http://github.com/jrpruit1/monet/Monet_Main_Pre-Login_Page.png)
 
 Register Page
 -------------
-![](Monet_Register_Page.png)
+![](http://github.com/jrpruit1/monet/Monet_Register_Page.png)
 
 Main Listing Page
 -----------------
-![](Monet_Main_Listing_Page.png)
+![](http://github.com/jrpruit1/monet/Monet_Main_Listing_Page.png)
 
 Edit Account Page
 -----------------
-![](Monet_Edit_Account.png)
+![](http://github.com/jrpruit1/monet/Monet_Edit_Account.png)
 
 Image Upload Page
 -----------------
-![](Monet_Image_Upload_Page.png)
+![](http://github.com/jrpruit1/monet/Monet_Image_Upload_Page.png)
 
 
 Image Detail Page
 -----------------
-![](Monet_Image_Detail_Page.png)
+![](http://github.com/jrpruit1/monet/Monet_Image_Detail_Page.png)
 
 Image Edit Page
 ---------------
-![](Monet_Image_Edit_Page.png)
+![](http://github.com/jrpruit1/monet/Monet_Image_Edit_Page.png)
