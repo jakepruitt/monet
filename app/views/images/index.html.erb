@@ -1,2 +1,8 @@
-<h1>Images#index</h1>
-<p>Find me in app/views/images/index.html.erb</p>
+<h1>Images</h1>
+<%= link_to 'Upload', new_image_path %>
+<% @user.images.each do |image| %>
+	<p><%= image.title %></p>
+	<a href="<%= image_path(image) %>">
+		<%= image_tag image.image.url(:square) %>
+	</a>
+<% end %>

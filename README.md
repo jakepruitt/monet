@@ -1,4 +1,4 @@
-monet
+Monet
 =====
 
 ![Travic CI build status](https://travis-ci.org/jrpruit1/monet.svg?branch=master)
@@ -30,4 +30,27 @@ Services
 Usage
 -----
 
-TODO add instructions
+First you will need to clone the project.
+
+Then you will need to use bundle to install the dependencies that are listed in the Gemfile.
+Do this with `bundle install`.
+This will install all dependencies into `vendor/bundle`.
+When running any rails or rake commands you will need to prefix them with `bundle exec` so that they are run with the correct versions of dependencies.
+
+You will also need to install **imagemagick**.
+This is not a Ruby Gem, so you will have to find the installation method for your platform.
+
+Next, you will need to apply all migrations to your database.
+Do this with `bundle exec bin/rake db:migrate`
+
+Now, you will need to set up the credentials for Amazon S3.
+These will not saved in any file, so we pass them to the server through environmental variables.
+In the shell that you are going to run the server from, run the following commands.
+
+```bash
+export S3_BUCKET_NAME=XXX
+export AWS_ACCESS_KEY_ID=XXX
+export AWS_SECRET_ACCESS_KEY=XXX
+```
+
+Then you are ready to run the server with `bundle exec bin/rails server`.
