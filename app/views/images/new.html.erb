@@ -1,0 +1,30 @@
+<h1>Upload an image</h1>
+<%= form_for :image, url: images_path do |f| %>
+	<table>
+		<tr>
+			<td>
+				<%= f.label :title %>
+			</td>
+			<td>
+				<%= f.text_field :title, size:"20" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :description %>
+			</td>
+			<td>
+				<%= f.text_area :description, size:"30x2" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :image %>
+			</td>
+			<td>
+				<%= f.file_field :image %>
+			</td>
+		</tr>
+	</table>
+	<%= f.submit "Upload image" %>
+<% end %>

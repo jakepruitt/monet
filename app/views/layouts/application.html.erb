@@ -8,6 +8,7 @@
   <div id="header">
     <% if signed_in? -%>
       <%= button_to t('.sign_out'), sign_out_path, :method => :delete %>
+      <%= link_to 'Home', root_url %>
     <% else -%>
       <%= link_to t('.sign_in'), sign_in_path %>
     <% end -%>

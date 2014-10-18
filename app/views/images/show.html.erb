@@ -1,0 +1,4 @@
+<h2><%= @image.title %></h2>
+<p><%= @image.description %></p>
+<p><%= link_to 'Edit', edit_image_path(@image) %> | <%= link_to 'Delete', image_path(@image), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<%= image_tag @image.image.url %>
