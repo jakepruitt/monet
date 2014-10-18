@@ -34,6 +34,10 @@ gem 'spring'#,        group: :development
 # Clearance authentication framework
 gem 'clearance'
 
+# Paperclip for simplifying image management
+gem 'paperclip'
+gem 'aws-sdk'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
