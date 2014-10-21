@@ -17,7 +17,6 @@ config/secrets.yml
 .env
 
 ## Environment normalisation:
-/bin
 /.bundle
 /vendor/bundle
 
