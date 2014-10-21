@@ -27,7 +27,7 @@ Services
 * [TravisCI](https://travis-ci.org/jrpruit1/monet)
 * [Balsamiq](https://cse360teammonet.mybalsamiq.com/projects/monet/grid)
 
-Usage
+Usage (development)
 -----
 
 First you will need to clone the project.
@@ -35,13 +35,20 @@ First you will need to clone the project.
 Then you will need to use bundle to install the dependencies that are listed in the Gemfile.
 Do this with `bundle install`.
 This will install all dependencies into `vendor/bundle`.
-When running any rails or rake commands you will need to prefix them with `bundle exec` so that they are run with the correct versions of dependencies.
+When running any rails or rake commands that are not in the `bin` folder, you will need to prefix them with `bundle exec` so that they are run with the correct versions of dependencies.
 
 You will also need to install **imagemagick**.
 This is not a Ruby Gem, so you will have to find the installation method for your platform.
 
 Next, you will need to apply all migrations to your database.
-Do this with `bundle exec bin/rake db:migrate`
+Do this with `bin/rake db:migrate`
+
+Then you need to generate the secret key which allows the rails server to sign cookies. Create a new file `config/secrets.yml`, and write the following into it.
+```yml
+development:
+  secret_key_base: XXX
+```
+Where XXX is a key generated with `bin/rake secret`.
 
 Now, you will need to set up the credentials for Amazon S3.
 These will not saved in any file, so we pass them to the server through environmental variables.
