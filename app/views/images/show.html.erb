@@ -3,7 +3,7 @@
 		<h2><%= @image.title %></h2>
 	</div>
 </div>
-<div class="row">
+<div class="row clearfix">
 	<%= image_tag @image.image.url, :class => "column medium-9 medium-push-3" %>
 	<div class="column medium-3 medium-pull-9">
 		<p><%= @image.description %></p>

@@ -15,3 +15,12 @@
  *= require foundation_and_overrides
 
  */
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.panel .truncate {
+	line-height: 1.2;
+}
