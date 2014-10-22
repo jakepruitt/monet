@@ -1,0 +1,8 @@
+<%= form_for :user, url: user_path(current_user), method: :patch do |f| %>
+  <%= image_tag @user.avatar.url %>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+  <%= f.label 'Full name' %>
+  <%= f.text_field :fullname %>
+  <%= f.submit 'Update profile' %>
+<% end %>

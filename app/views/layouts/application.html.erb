@@ -31,6 +31,9 @@
           <!-- Right Nav Section -->
           <ul class="right">
             <% if signed_in? -%>
+              <li>
+                <%= link_to 'Profile', edit_user_path(current_user) %>
+              </li>
               <li class="has-form">
                 <%= link_to t('.sign_out'), sign_out_path, :method => :delete, :class => 'button' %>
               </li>
@@ -38,12 +41,10 @@
               <li>
                 <%= link_to t('.sign_in'), sign_in_path %>
               </li>
-            <% end -%>
-            <li>
-              <% if !signed_in? -%>
+              <li>
                 <%= link_to t('.sign_up'), sign_up_path %>
-              <% end -%>
-            </li>
+              </li>
+            <% end -%>
           </ul>
         </section>
       </nav>
