@@ -2,11 +2,11 @@ class ImagesController < ApplicationController
   before_filter :authorize
 
   def index
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def create
-    @user = User.find(current_user.id)
+    @user = current_user
     @image = @user.images.new(image_params)
 
     if @image.save
@@ -23,38 +23,42 @@ class ImagesController < ApplicationController
   def edit
     @image = Image.find(params[:id])
     # Verify that they are requesting an image that they actually own.
-    unless @image.user_id === current_user.id
-      redirect_to root_url
+    if @image.user_id != current_user.id
+      # If the user doesn't own this image, pretend we didn't find an image.
+      raise ActiveRecord::RecordNotFound
     end
   end
 
   def show
     @image = Image.find(params[:id])
     # Verify that they are requesting an image that they actually own.
-    unless @image.user_id === current_user.id
-      redirect_to root_url
+    if @image.user_id != current_user.id
+      # If the user doesn't own this image, pretend we didn't find an image.
+      raise ActiveRecord::RecordNotFound
     end
   end
 
   def update
     @image = Image.find(params[:id])
     # Verify that they are requesting an image that they actually own.
-    unless @image.user_id === current_user.id
-      redirect_to root_url
+    if @image.user_id != current_user.id
+      # If the user doesn't own this image, pretend we didn't find an image.
+      raise ActiveRecord::RecordNotFound
     end
 
     if @image.update(image_params)
       redirect_to @image
     else
-      render edit_image_path
+      render action: 'edit'
     end
   end
 
   def destroy
     @image = Image.find(params[:id])
     # Verify that they are requesting an image that they actually own.
-    unless @image.user_id === current_user.id
-      redirect_to root_url
+    if @image.user_id != current_user.id
+      # If the user doesn't own this image, pretend we didn't find an image.
+      raise ActiveRecord::RecordNotFound
     end
 
     @image.destroy
@@ -62,13 +66,6 @@ class ImagesController < ApplicationController
   end
 
   private
-
-  # def validate_access(image)
-  #   unless image.user_id === current_user.id
-  #     @user = User.find(current_user.id)
-  #     redirect_to 'index', notice: 'You do not have permission to view that image.'
-  #   end
-  # end
 
   def image_params
     params.require(:image).permit(:image, :title, :description)
