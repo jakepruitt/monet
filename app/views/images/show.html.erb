@@ -1,4 +1,16 @@
-<h2><%= @image.title %></h2>
-<p><%= @image.description %></p>
-<p><%= link_to 'Edit', edit_image_path(@image) %> | <%= link_to 'Delete', image_path(@image), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<%= image_tag @image.image.url %>
+<div class="row">
+	<div class="column">
+		<h2><%= @image.title %></h2>
+	</div>
+</div>
+<div class="row">
+	<%= image_tag @image.image.url, :class => "column medium-9 medium-push-3" %>
+	<div class="column medium-3 medium-pull-9">
+		<p><%= @image.description %></p>
+		<ul class="small-block-grid-2">
+			<li><%= link_to 'Edit', edit_image_path(@image), :class => 'button expand' %></li>
+			<li><%= link_to 'Delete', image_path(@image), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button expand alert' %></li>
+		</ul>
+		<%= link_to '< Go back home', root_url %>
+	</div>
+</div>
