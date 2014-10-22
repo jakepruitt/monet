@@ -1,22 +1,17 @@
-<h1>Edit an image</h1>
 <%= form_for :image, url: image_path(@image), method: :patch do |f| %>
-	<table>
-		<tr>
-			<td>
-				<%= f.label :title %>
-			</td>
-			<td>
-				<%= f.text_field :title, size:"20" %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :description %>
-			</td>
-			<td>
-				<%= f.text_area :description, size:"30x2" %>
-			</td>
-		</tr>
-	</table>
-	<%= f.submit "Save Changes" %>
+<div class="row">
+	<div class="column">
+		<h2><%= f.text_field :title, size:"20" %></h2>
+	</div>
+</div>
+<div class="row">
+	<%= image_tag @image.image.url, :class => "column medium-9 medium-push-3" %>
+	<div class="column medium-3 medium-pull-9">
+		<p><%= f.text_area :description, size:"30x2" %></p>
+		<ul class="small-block-grid-2">
+			<li><%= f.submit "Save", :class => 'button expand' %></li>
+			<li><%= link_to 'Cancel', image_path(@image), :class => 'button expand alert' %></li>
+		</ul>
+	</div>
+</div>
 <% end %>

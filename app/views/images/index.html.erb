@@ -1,8 +1,20 @@
-<h1>Images</h1>
-<%= link_to 'Upload', new_image_path %>
-<% @user.images.each do |image| %>
-	<p><%= image.title %></p>
-	<a href="<%= image_path(image) %>">
-		<%= image_tag image.image.url(:square) %>
-	</a>
-<% end %>
+<div class="row">
+	<h1 class="column">Images</h1>
+	<div class="column medium-4 end">
+		<%= link_to 'Upload', new_image_path, html_options = { :class => 'button expand' } %>
+	</div>
+	<div class="column small-12">
+		<div class="row">
+			<% @user.images.each do |image| %>
+				<div class="column small-6 medium-4 end">
+					<a href="<%= image_path(image) %>">
+						<%= image_tag image.image.url(:square) %>
+					</a>
+					<div class="panel">
+						<a href="<%= image_path(image) %>"><h3><%= image.title %></h3></a>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

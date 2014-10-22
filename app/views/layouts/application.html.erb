@@ -1,25 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-  <div id="header">
-    <% if signed_in? -%>
-      <%= button_to t('.sign_out'), sign_out_path, :method => :delete %>
-      <%= link_to 'Home', root_url %>
-    <% else -%>
-      <%= link_to t('.sign_in'), sign_in_path %>
-    <% end -%>
-  </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-  <%= yield %>
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="fixed">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1>
+              <% if signed_in? -%>
+                <%= link_to 'Home', root_url %>
+              <% else -%>
+                <%= link_to 'Monet', root_url %>
+              <% end -%>
+            </h1>
+          </li>
+           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <% if signed_in? -%>
+              <li class="has-form">
+                <%= link_to t('.sign_out'), sign_out_path, :method => :delete, :class => 'button' %>
+              </li>
+            <% else -%>
+              <li>
+                <%= link_to t('.sign_in'), sign_in_path %>
+              </li>
+            <% end -%>
+            <li>
+              <% if !signed_in? -%>
+                <%= link_to t('.sign_up'), sign_up_path %>
+              <% end -%>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+
+    <div id="flash">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>" data-alert class="alert-box">
+          <%=h value %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+    </div>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

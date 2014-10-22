@@ -1,30 +1,30 @@
-<h1>Upload an image</h1>
-<%= form_for :image, url: images_path do |f| %>
-	<table>
-		<tr>
-			<td>
-				<%= f.label :title %>
-			</td>
-			<td>
-				<%= f.text_field :title, size:"20" %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :description %>
-			</td>
-			<td>
-				<%= f.text_area :description, size:"30x2" %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :image %>
-			</td>
-			<td>
+<div class="row">
+	<h1 class="columns medium-6 medium-centered">Upload an image</h1>
+	<%= form_for :image, :html => {:class => 'column medium-6 medium-centered'}, url: images_path do |f| %>
+		<div class="row">
+			<div class="small-3 columns">
+				<%= f.label :title, :class => 'inline' %>
+			</div>
+			<div class="small-9 columns">
+				<%= f.text_field :title %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-3 columns">
+				<%= f.label :description, :class => 'inline' %>
+			</div>
+			<div class="small-9 columns">
+				<%= f.text_area :description %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-3 columns">
+				<%= f.label :image, :class => 'inline' %>
+			</div>
+			<div class="small-9 columns">
 				<%= f.file_field :image %>
-			</td>
-		</tr>
-	</table>
-	<%= f.submit "Upload image" %>
-<% end %>
+			</div>
+		</div>
+		<%= f.submit "Upload image", :class => 'button' %>
+	<% end %>
+</div>
