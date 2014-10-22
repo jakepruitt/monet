@@ -1,8 +1,18 @@
-<%= form_for :user, url: user_path(current_user), method: :patch do |f| %>
-  <%= image_tag @user.avatar.url %>
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-  <%= f.label 'Full name' %>
-  <%= f.text_field :fullname %>
-  <%= f.submit 'Update profile' %>
-<% end %>
+<div class="edit row">
+  <h2 class="column medium-6 medium-centered">Edit Account</h2>
+  <%= form_for :user, url: user_path(current_user), :html => {:class => 'column medium-6 medium-centered'}, method: :patch do |f| %>
+    <%= f.label :avatar %>
+    <%= image_tag @user.avatar.url %>
+    <%= f.file_field :avatar %>
+    <%= f.label 'Full name' %>
+    <%= f.text_field :fullname %>
+
+    <div class="submit-field">
+      <%= f.submit 'Update profile', :class => 'button' %>
+    </div>
+
+    <div class="other-links">
+      <p><%= link_to '< Go back home', root_url %></p>
+    </div>
+  <% end %>
+</div>
