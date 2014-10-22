@@ -1,4 +1,4 @@
-<%= form_for :session, :url => session_path do |form| %>
+<%= form_for :session, :html => {:class => 'column medium-6 medium-centered'}, :url => session_path do |form| %>
   <div class="text-field">
     <%= form.label :email %>
     <%= form.text_field :email, :type => 'email' %>
@@ -10,13 +10,15 @@
   </div>
 
   <div class="submit-field">
-    <%= form.submit %>
+    <%= form.submit :class => "button" %>
   </div>
 
   <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t('.sign_up'), sign_up_path %>
-    <% end %>
-    <%= link_to t('.forgot_password'), new_password_path %>
+    <p>
+      <% if Clearance.configuration.allow_sign_up? %>
+        <%= link_to t('.sign_up'), sign_up_path %>
+      <% end %>
+    </p>
+    <p><%= link_to t('.forgot_password'), new_password_path %></p>
   </div>
 <% end %>
