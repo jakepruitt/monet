@@ -17,16 +17,16 @@ class UsersController < Clearance::UsersController
       raise ActiveRecord::RecordNotFound
     end
 
-    if @user.update(user_params)
+    if @user.update(user_edit_params)
       redirect_to root_url
     else
       render action: 'edit'
     end
   end
-  
+
   private
 
-  def user_params
+  def user_edit_params
     params.require(:user).permit(:fullname, :avatar)
   end
 
