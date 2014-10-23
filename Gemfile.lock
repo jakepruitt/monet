@@ -149,6 +149,7 @@ DEPENDENCIES
   jquery-rails
   paperclip
   rails (= 4.1.6)
+  rake
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
