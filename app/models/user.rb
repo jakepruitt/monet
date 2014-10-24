@@ -9,8 +9,7 @@ class User < ActiveRecord::Base
     attachment_size: { less_than: 5.megabytes }
 
   # This method associates the attribute ":image" with a file attachment
-  has_attached_file :avatar, :default_url => "/assets/default_profile.jpg",
-  styles: {
+  has_attached_file :avatar, styles: {
     original: '305x305>',
   }
 end
