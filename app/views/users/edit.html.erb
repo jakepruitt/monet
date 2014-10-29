@@ -1,5 +1,6 @@
+<% title 'Profile' %>
 <div class="edit row">
-  <h2 class="column medium-6 medium-centered">Edit Account</h2>
+  <h2 class="column medium-6 medium-centered">Profile</h2>
   <%= form_for :user, url: user_path(current_user), :html => {:class => 'column medium-6 medium-centered'}, method: :patch do |f| %>
     <%= f.label :avatar, 'Avatar' %>
     <%= image_tag resolve_user_avatar(@user) %>
