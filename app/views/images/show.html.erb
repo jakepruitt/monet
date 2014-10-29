@@ -1,3 +1,4 @@
+<% title @image.title.nil? || @image.title.empty? ? 'Image ' + @image.id.to_s : @image.title %>
 <div class="row">
 	<div class="column">
 		<h2><%= @image.title %></h2>

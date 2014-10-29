@@ -5,4 +5,8 @@ module ApplicationHelper
     end
     return 'default_profile.jpg'
   end
+
+  def title(page_title)
+    content_for :title, page_title.to_s
+  end
 end
