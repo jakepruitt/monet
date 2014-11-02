@@ -1,12 +1,14 @@
 <%= form_for :image, url: image_path(@image), method: :patch do |f| %>
 <div class="row">
 	<div class="column">
+		<h2>Title:</h2>
 		<h2><%= f.text_field :title, size:"20" %></h2>
 	</div>
 </div>
 <div class="row">
 	<%= image_tag @image.image.url, :class => "column medium-9 medium-push-3" %>
 	<div class="column medium-3 medium-pull-9">
+		<p>Description:</p>
 		<p><%= f.text_area :description, size:"30x2" %></p>
 		<ul class="small-block-grid-2">
 			<li><%= f.submit "Save", :class => 'button expand' %></li>
