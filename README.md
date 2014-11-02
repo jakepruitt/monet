@@ -33,7 +33,7 @@ Usage (development)
 First you will need to clone the project.
 
 Then you will need to use bundle to install the dependencies that are listed in the Gemfile.
-Do this with `bundle install`.
+Do this with `bundle install --without production --path vendor/bundle`.
 This will install all dependencies into `vendor/bundle`.
 When running any rails or rake commands that are not in the `bin` folder, you will need to prefix them with `bundle exec` so that they are run with the correct versions of dependencies.
 
@@ -43,12 +43,14 @@ This is not a Ruby Gem, so you will have to find the installation method for you
 Next, you will need to apply all migrations to your database.
 Do this with `bin/rake db:migrate`
 
+<!--
 Then you need to generate the secret key which allows the rails server to sign cookies. Create a new file `config/secrets.yml`, and write the following into it.
 ```yml
 development:
   secret_key_base: XXX
 ```
 Where XXX is a key generated with `bin/rake secret`.
+-->
 
 Now, you will need to set up the credentials for Amazon S3.
 These will not saved in any file, so we pass them to the server through environmental variables.
@@ -61,3 +63,25 @@ export AWS_SECRET_ACCESS_KEY=XXX
 ```
 
 Then you are ready to run the server with `bundle exec bin/rails server`.
+
+<!--
+### Migrating to PostgreSQL
+In order to run Monet on Heroku, we need to switch our database to PostgreSQL.
+Heroku recommends that we maintain a consistent environment and run the same database in both the development and production environment, and regardless I wasn't able to get the Heroku deploy to work with `sqlite3` in the `Gemfile`, even as a development-only dependency.
+
+After you've pulled the changes that include the migration to PostgreSQL, you will need to set up a PostgreSQL instance on your machine. On mine it went something like:
+1. Install `postgresql` package.
+2. Switch to `postgres` user and run `initdb --locale en_US.UTF-8 -E UTF8 -D '/var/lib/postgres/data'`
+3. Start the PostgreSQL service. With systemd it's `systemctl start postgresql`
+4. Switch to the `postgres` user again and run `createuser --interactive`, enter your username and yes to supervisor when prompted.
+
+Then, in the application root, run `bin/rake db:create` and `bin/rake db:migrate`. You should be all set.
+-->
+
+## Production Deployment
+
+Set the following config vars on Heroku:
+- `SECRET_KEY_BASE`
+- `S3_BUCKET_NAME`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
