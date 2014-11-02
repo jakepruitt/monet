@@ -46,10 +46,13 @@ class ImagesController < ApplicationController
       raise ActiveRecord::RecordNotFound
     end
 
+    puts params[:image].class
+    puts params[:image].to_s
+
     if @image.update(image_params)
       redirect_to @image
     else
-      render action: 'edit'
+      render action: 'show'
     end
   end
 

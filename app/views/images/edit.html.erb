@@ -1,20 +1,238 @@
 <% title 'Edit Image' %>
-<%= form_for :image, url: image_path(@image), method: :patch do |f| %>
+<%= form_for :image, name:'image_edit', html: { name: 'image_form'}, url: image_path(@image), method: :patch do |f| %>
 <div class="row">
-	<div class="column">
-		<h2>Title:</h2>
-		<h2><%= f.text_field :title, size:"20" %></h2>
-	</div>
+  <div class="column">
+    <h2>Title:</h2>
+    <h2><%= f.text_field :title, size:"20" %></h2>
+  </div>
 </div>
 <div class="row">
-	<%= image_tag @image.image.url, :class => "column medium-9 medium-push-3" %>
-	<div class="column medium-3 medium-pull-9">
-		<p>Description:</p>
-		<p><%= f.text_area :description, size:"30x2" %></p>
-		<ul class="small-block-grid-2">
-			<li><%= f.submit "Save", :class => 'button expand' %></li>
-			<li><%= link_to 'Cancel', image_path(@image), :class => 'button expand alert' %></li>
-		</ul>
-	</div>
+  <%= image_tag @image.image.url, :crossOrigin => "anonymous", :class => "column medium-9 medium-push-3", :id => "image" %>
+  <div class="column medium-3 medium-pull-9">
+    <p>Description:</p>
+    <p><%= f.text_area :description, size:"30x2" %></p>
+    <ul class="small-block-grid-2">
+      <li><button data-submit-path="<%= image_path(@image) %>" class="button expand" id="somethingelse">Save</button></li>
+      <li><%= link_to 'Cancel', image_path(@image), :class => 'button expand alert' %></li>
+    </ul>
+
+    <div id="Filters" class="">
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>brightness</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="-100"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="brightness"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>contrast</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="-100"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="contrast"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>saturation</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="-100"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="saturation"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>vibrance</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="-100"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="vibrance"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>exposure</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="-100"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="exposure"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>hue</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="hue"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>sepia</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="sepia"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>gamma</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="10"
+            step="0.1"
+            value="0"
+            data-filter="gamma"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>noise</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="noise"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>clip</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="clip"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>sharpen</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+            data-filter="sharpen"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+
+      <div class="Filter">
+        <div class="FilterName">
+          <p>stackBlur</p>
+        </div>
+
+        <div class="FilterSetting">
+          <input
+            type="range"
+            min="0"
+            max="20"
+            step="1"
+            value="0"
+            data-filter="stackBlur"
+          >
+          <span class="FilterValue">0</span>
+        </div>
+      </div>
+  </div>
 </div>
 <% end %>
