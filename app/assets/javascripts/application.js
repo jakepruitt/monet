@@ -93,29 +93,21 @@ $(function(){ $(document).foundation(); });
             $(this).find("~ .FilterValue").html(k);
             return a()
         });
-        $('#somethingelse').on('click', function(evt) {
+        $('#submit').on('click', function(evt) {
             var formData = new FormData(document.forms.namedItem("image_form"));
-            // var description = $('#image_description').val();
-            // var title = $('#image_title').val();
-
-            // formData.append("description", description);
-            // formData.append("title", title);
 
             if(imagedirty) {
-                // JavaScript file-like object...
-                var content = c.toBase64(); // the body of the new file...
-                console.log(content);
-                var blob = new Blob([content], { type: "image/png"});
-
-                formData.append("image[image]", blob);
+                var imageData = c.toBase64();
+                formData.append("image[image]", imageData);
             }
 
-            var imageSubmitPath = $(this).attr('data-submit-path');
+            var submitPath = $(this).attr('data-submit-path');
             var request = new XMLHttpRequest();
-            request.open("PATCH", imageSubmitPath);
+            request.open("PATCH", submitPath);
             request.send(formData);
+
             evt.preventDefault();
-            window.location = imageSubmitPath;
+            window.location = submitPath;
         })
         return $("#PresetFilters").on("click", "a", function() {
             return h($(this).data("preset"))
