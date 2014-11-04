@@ -94,6 +94,8 @@ $(function(){ $(document).foundation(); });
             return a()
         });
         $('#submit').on('click', function(evt) {
+            evt.preventDefault();
+            console.log("ouch");
             var formData = new FormData(document.forms.namedItem("image_form"));
 
             if(imagedirty) {
@@ -103,11 +105,12 @@ $(function(){ $(document).foundation(); });
 
             var submitPath = $(this).attr('data-submit-path');
             var request = new XMLHttpRequest();
+            request.addEventListener("load", function() {
+                window.location = submitPath;
+            });
+
             request.open("PATCH", submitPath);
             request.send(formData);
-
-            evt.preventDefault();
-            window.location = submitPath;
         })
         return $("#PresetFilters").on("click", "a", function() {
             return h($(this).data("preset"))
