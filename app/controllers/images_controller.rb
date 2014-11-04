@@ -46,11 +46,8 @@ class ImagesController < ApplicationController
       raise ActiveRecord::RecordNotFound
     end
 
-    if @image.update(image_params)
-      redirect_to @image
-    else
-      render action: 'show'
-    end
+    success = @image.update(image_params)
+    render :json => { "success" => success }
   end
 
   def destroy
