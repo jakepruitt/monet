@@ -93,24 +93,10 @@ $(function(){ $(document).foundation(); });
             $(this).find("~ .FilterValue").html(k);
             return a()
         });
-        $('#submit').on('click', function(evt) {
-            evt.preventDefault();
-            console.log("ouch");
-            var formData = new FormData(document.forms.namedItem("image_form"));
-
+        $('#image_edit_submit').on('click', function(evt) {
             if(imagedirty) {
-                var imageData = c.toBase64();
-                formData.append("image[image]", imageData);
+                $('#image_field').val(c.toBase64())
             }
-
-            var submitPath = $(this).attr('data-submit-path');
-            var request = new XMLHttpRequest();
-            request.addEventListener("load", function() {
-                window.location = submitPath;
-            });
-
-            request.open("PATCH", submitPath);
-            request.send(formData);
         })
         return $("#PresetFilters").on("click", "a", function() {
             return h($(this).data("preset"))

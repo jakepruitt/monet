@@ -1,5 +1,6 @@
 <% title 'Edit Image' %>
-<%= form_for :image, name:'image_edit', html: { name: 'image_form'}, url: image_path(@image), method: :patch do |f| %>
+<%= form_for :image, url: image_path(@image), method: :patch do |f| %>
+<%= f.hidden_field :image, :id => 'image_field', :value => '' %>
 <div class="row">
   <div class="column">
     <h2>Title:</h2>
@@ -12,7 +13,7 @@
     <p>Description:</p>
     <p><%= f.text_area :description, size:"30x2" %></p>
     <ul class="small-block-grid-2">
-      <li><button data-submit-path="<%= image_path(@image) %>" class="button expand" id="submit">Save</button></li>
+      <li><%= f.submit 'Save', :class => 'button expand', :id => 'image_edit_submit' %></li>
       <li><%= link_to 'Cancel', image_path(@image), :class => 'button expand alert' %></li>
     </ul>
 
