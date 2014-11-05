@@ -32,35 +32,35 @@ $(function(){ $(document).foundation(); });
         var j, k;
         if (f) {
             e = true;
-            return
+            return;
         } else {
-            e = false
+            e = false;
         }
         f = true;
         c.revert(false);
         for (j in b) {
             if (!g.call(b, j)) {
-                continue
+                continue;
             }
             k = b[j];
             k = parseFloat(k, 10);
             if (k === 0) {
-                continue
+                continue;
             }
-            c[j](k)
+            c[j](k);
         }
         return c.render(function() {
             f = false;
             if (e) {
-                return a()
+                return a();
             }
-        })
+        });
     }, 300);
     d = false;
     h = function(k) {
         var l, j;
         if (d) {
-            return
+            return;
         }
         $("#PresetFilters a").removeClass("Active");
         l = $("#PresetFilters a[data-preset='" + k + "']");
@@ -71,18 +71,18 @@ $(function(){ $(document).foundation(); });
         i[k]();
         return i.render(function() {
             l.html(j);
-            return d = false
-        })
+            return d = false;
+        });
     };
     $(document).ready(function() {
         if (!($("#image").length > 0)) {
-            return
+            return;
         }
         c = Caman("#image");
         $(".FilterSetting input").each(function() {
             var j;
             j = $(this).data("filter");
-            return b[j] = $(this).val()
+            return b[j] = $(this).val();
         });
         $("#Filters").on("change", ".FilterSetting input", function() {
             var j, k;
@@ -91,15 +91,15 @@ $(function(){ $(document).foundation(); });
             k = $(this).val();
             b[j] = k;
             $(this).find("~ .FilterValue").html(k);
-            return a()
+            return a();
         });
         $('#image_edit_submit').on('click', function(evt) {
             if(imagedirty) {
-                $('#image_field').val(c.toBase64())
+                $('#image_field').val(c.toBase64());
             }
-        })
+        });
         return $("#PresetFilters").on("click", "a", function() {
-            return h($(this).data("preset"))
-        })
-    })
+            return h($(this).data("preset"));
+        });
+    });
 }).call(this);
