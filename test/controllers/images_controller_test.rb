@@ -31,7 +31,9 @@ class ImagesControllerTest < ActionController::TestCase
      assert_response :redirect
    end
 
-  
+  #assert_routing '/images', {controller: "images", action: "new" }
+  #assert_routing '/images/new', {controller: "images", action: "new" }
+  #assert_routing '/images/1', {controller: "images", action: "show"}
 
   context "when signed in" do
     setup do
