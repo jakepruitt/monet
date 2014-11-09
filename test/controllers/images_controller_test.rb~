@@ -31,8 +31,6 @@ class ImagesControllerTest < ActionController::TestCase
      assert_response :redirect
    end
 
-  
-
   context "when signed in" do
     setup do
       @user = User.find(1)
