@@ -1,10 +1,17 @@
 FactoryGirl.define do
-  sequence :email do |n|
-    "user#{n}@example.com"
-  end
+	factory :image do
+		association :user_id, factory: :user
+		title "Title"
+		description "Description"
+		image Rack::Test::UploadedFile.new(Rails.root + "spec/support/data/test1.jpeg", "image/jpg")
+	end
 
-  factory :user do
-    email
-    password "password"
-  end
+	sequence :email do |n|
+		"user#{n}@example.com"
+	end
+
+	factory :user do
+		email
+		password "password"
+	end
 end

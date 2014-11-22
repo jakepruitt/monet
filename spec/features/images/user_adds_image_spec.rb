@@ -8,7 +8,7 @@ feature "User adds image" do
 
 		expect(page).to have_field "image_title"
 		expect(page).to have_button "Upload image"
-		image = create(:image, title: "Squirrel", description: "Another day in the forest")
+		image = create(:image, title: "Squirrel", description: "Another day in the forest", user_id: user.id)
 		fill_in "image_title", with: image.title
 		fill_in "image_description", with: image.description
 		# attach_file "image_image", "spec/support/data/test1.jpeg"
