@@ -39,6 +39,9 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'rspec-rails', '~> 2.13'
   gem 'shoulda-context'
+  gem 'faker'
+  # gem 'selenium-webdriver'
+  # gem 'capybara-webkit'
 end
 
 group :production do

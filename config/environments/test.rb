@@ -34,7 +34,20 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # Supposed to fix error in integration testing. See http://stackoverflow.com/questions/4114835/heroku-devise-missing-host-to-link-to-please-provide-host-parameter-or-set-d
+  config.action_mailer.default_url_options = { :host => 'localhost' }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   #Paperclip::Attachment.default_options[:path] = ':rails_root/test/fixtures/data/:filename'
+
+  # Paperclip configuration
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
