@@ -9,7 +9,6 @@ feature "User edits image" do
 	end
 
 	scenario "with a new title" do
-
 		fill_in "image_title", with: "Chipmunk"
 
 		click_button "Save"
@@ -18,11 +17,19 @@ feature "User edits image" do
 	end
 
 	scenario "with a new description" do
-
 		fill_in "image_description", with: "#ForestLyfe"
 
 		click_button "Save"
 
 		expect(page).to have_content "#ForestLyfe"
 	end
+
+	scenario "with a changed image" do
+		find(:xpath, "//input[@data-filter='brightness']").set 57
+
+		click_button "Save"
+
+		expect(page).to have_xpath ".//img[contains(@src,'test1.jpeg')]"
+	end
+
 end

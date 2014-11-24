@@ -40,6 +40,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.13'
   gem 'shoulda-context'
   gem 'faker'
+  # gem 'selenium-webdriver'
+  # gem 'capybara-webkit'
 end
 
 group :production do
