@@ -1,11 +1,14 @@
 require "spec_helper"
 
 feature "User edits image" do
-	scenario "with a new title" do
+	before(:each) do
 		sign_in_with_image
 
 		click_link "Squirrel"
 		click_link "Edit"
+	end
+
+	scenario "with a new title" do
 
 		fill_in "image_title", with: "Chipmunk"
 
@@ -15,10 +18,6 @@ feature "User edits image" do
 	end
 
 	scenario "with a new description" do
-		sign_in_with_image
-
-		click_link "Squirrel"
-		click_link "Edit"
 
 		fill_in "image_description", with: "#ForestLyfe"
 
